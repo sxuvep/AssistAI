@@ -1,0 +1,10 @@
+# .NET specific files
+bin/
+obj/
+*.user
+*.suo
+*.log
+.vs/
+.vscode/
+.DS_Store
+node_modules/

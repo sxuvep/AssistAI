@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssistAI.API", "AssistAI.API\AssistAI.API.csproj", "{3FE0DCDF-4B13-4030-8497-9064A9F0AF30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssistAI.Domain", "AssistAI.Domain\AssistAI.Domain.csproj", "{E0F9357C-351C-410A-8A2E-D9C02A236E4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssistAI.Application", "AssistAI.Application\AssistAI.Application.csproj", "{6A8579B9-0FE6-4A36-B7CB-1C19DE07D4A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssistAI.Infrastructure", "AssistAI.Infrastructure\AssistAI.Infrastructure.csproj", "{A46E2B38-F7C0-4F44-8104-8C0B8586BDA2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3FE0DCDF-4B13-4030-8497-9064A9F0AF30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FE0DCDF-4B13-4030-8497-9064A9F0AF30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FE0DCDF-4B13-4030-8497-9064A9F0AF30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FE0DCDF-4B13-4030-8497-9064A9F0AF30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0F9357C-351C-410A-8A2E-D9C02A236E4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0F9357C-351C-410A-8A2E-D9C02A236E4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0F9357C-351C-410A-8A2E-D9C02A236E4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0F9357C-351C-410A-8A2E-D9C02A236E4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A8579B9-0FE6-4A36-B7CB-1C19DE07D4A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A8579B9-0FE6-4A36-B7CB-1C19DE07D4A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A8579B9-0FE6-4A36-B7CB-1C19DE07D4A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A8579B9-0FE6-4A36-B7CB-1C19DE07D4A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A46E2B38-F7C0-4F44-8104-8C0B8586BDA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A46E2B38-F7C0-4F44-8104-8C0B8586BDA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A46E2B38-F7C0-4F44-8104-8C0B8586BDA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A46E2B38-F7C0-4F44-8104-8C0B8586BDA2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
