@@ -1,10 +1,34 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Identity.Web;
+using Microsoft.AspNetCore.Authorization;
+using Azure.Identity;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Read Key valut URI from appsettings
+var keyValutUri = builder.Configuration["AzureKeyValut:VaultUri"];
+
+// Configure Key Valut integration
+if (!string.IsNullOrEmpty(keyValutUri))
+{
+    builder.Configuration.AddAzureKeyVault(new Uri(keyValutUri), new DefaultAzureCredential());
+}
+
+// Add Authentication services using Azure AD
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+.AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
+
+builder.Services.AddAuthorization();
+
+
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -13,29 +37,21 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+// public endpoint - no authentication required
+app.MapGet("/", () => Results.Ok("Welcome to AssistAI API"));
 
-app.MapGet("/weatherforecast", () =>
+// SECURE ENDPOINTS
+app.MapGet("/secure-data", [Authorize] () =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
+    var clientSecret = builder.Configuration["AssistAI-Client-Secret"];
+    if (string.IsNullOrEmpty(clientSecret))
+    {
+        return Results.Problem("Failed to retrieve secret from Azure Key Valult.");
+    }
+    return Results.Ok(new { secret = clientSecret });
+});
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
